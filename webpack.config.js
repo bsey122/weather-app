@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  mode: 'development',
   entry: './src/index.js',
   output: {
     filename: 'main.js',
@@ -13,5 +14,8 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
     ],
+  },
+  devServer: {
+    static: './dist',
   },
 };
