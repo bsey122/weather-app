@@ -12,7 +12,15 @@ const weather = (() => {
   function fetchData(url) {
     return fetch(url)
       .then((response) => response.json())
-      .then((response) => response);
+      .then((response) => {
+        if (response.cod && response.message) {
+          throw new Error(response.message);
+        }
+        return response;
+      })
+      .catch((error) => {
+        throw error;
+      });
   }
 
   function getWeatherDataFromFetch(data) {
