@@ -20,6 +20,7 @@ const displayWeather = (() => {
   const unitToggle = document.querySelector('[data-unit-toggle]');
   const sunriseElement = document.querySelector('[data-sunrise]');
   const sunsetElement = document.querySelector('[data-sunset]');
+  const errorElement = document.querySelector('[data-error]');
 
   function convertDate(timestamp, timezoneOffset) {
     const MILLISECONDS = 1000;
@@ -131,8 +132,15 @@ const displayWeather = (() => {
       hour: '2-digit',
       minute: '2-digit',
     });
+    errorElement.textContent = '';
+    errorElement.classList.add('hidden');
   }
-  return { displayWeatherData, convertWeatherData };
+
+  function displayError(error) {
+    errorElement.textContent = error.message;
+    errorElement.classList.remove('hidden');
+  }
+  return { displayWeatherData, convertWeatherData, displayError };
 })();
 
 export default displayWeather;
