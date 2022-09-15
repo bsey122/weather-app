@@ -54,11 +54,13 @@ const displayWeather = (() => {
       timezone,
     } = weatherData;
 
+    const METERS = 1000;
+
     temp = Math.round(temp);
     feelsLike = Math.round(feelsLike);
     tempMax = Math.round(tempMax);
     tempMin = Math.round(tempMin);
-    visibility = Math.round(visibility / 1000);
+    visibility = Math.round(visibility / METERS);
     dt = convertDate(dt, timezone);
     sunrise = convertDate(sunrise, timezone);
     sunset = convertDate(sunset, timezone);
